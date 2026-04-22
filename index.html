@@ -3,542 +3,406 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[Guide Title]</title>
+  <title>iOS Jailbreak Guide Selector</title>
   <style>
-    :root {
-      --bg: #0f1115;
-      --card: #171a21;
-      --card-2: #1f2430;
-      --text: #e8ecf1;
-      --muted: #aab3c2;
-      --accent: #4da3ff;
-      --accent-2: #7cc4ff;
-      --success: #2ecc71;
-      --warning: #f39c12;
-      --danger: #ff5d73;
-      --border: #2a3140;
-      --code-bg: #0b0d12;
-      --shadow: 0 10px 30px rgba(0,0,0,0.25);
-      --radius: 16px;
-      --max-width: 1100px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(180deg, #0c0f14 0%, #121722 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: var(--accent-2);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(100% - 32px, var(--max-width));
-      margin: 0 auto;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      color: #222;
+      line-height: 1.5;
     }
 
     header {
-      padding: 48px 0 24px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, rgba(77,163,255,0.16), rgba(124,196,255,0.06));
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: var(--shadow);
-    }
-
-    .tag {
-      display: inline-block;
-      background: rgba(77,163,255,0.15);
-      color: var(--accent-2);
-      border: 1px solid rgba(77,163,255,0.25);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      margin-bottom: 14px;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 800px;
-    }
-
-    .quick-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 14px;
-      margin-top: 24px;
-    }
-
-    .quick-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-    }
-
-    .quick-card strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--accent-2);
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(12, 15, 20, 0.8);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      width: min(100% - 32px, var(--max-width));
-      margin: 0 auto;
-      display: flex;
-      gap: 12px;
-      padding: 12px 0;
-      overflow-x: auto;
-    }
-
-    .nav-inner a {
-      white-space: nowrap;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    .nav-inner a:hover {
-      background: var(--card-2);
-      text-decoration: none;
+      background: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
 
     main {
-      padding: 28px 0 60px;
+      max-width: 950px;
+      margin: 20px auto;
+      padding: 0 15px 30px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
+    .box {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
     }
 
-    aside {
-      position: sticky;
-      top: 78px;
-      align-self: start;
+    h1, h2, h3 {
+      margin-top: 0;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .card + .card {
-      margin-top: 18px;
-    }
-
-    .sidebar-list,
-    .checklist,
-    .step-list {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .sidebar-list li,
-    .checklist li,
-    .step-list li {
-      margin: 8px 0;
-    }
-
-    section {
-      margin-bottom: 24px;
-    }
-
-    section .card h2 {
-      margin-bottom: 14px;
-    }
-
-    .notice {
-      border-left: 4px solid var(--warning);
-      background: rgba(243, 156, 18, 0.08);
-      padding: 14px 16px;
-      border-radius: 12px;
-      margin: 14px 0;
-    }
-
-    .danger {
-      border-left-color: var(--danger);
-      background: rgba(255, 93, 115, 0.08);
-    }
-
-    .success {
-      border-left-color: var(--success);
-      background: rgba(46, 204, 113, 0.08);
-    }
-
-    .info-table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 12px;
+    label {
+      display: block;
       margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: bold;
     }
 
-    .info-table th,
-    .info-table td {
-      border: 1px solid var(--border);
+    select, button {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #999;
+      background: white;
+    }
+
+    button {
+      margin-top: 16px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .message {
+      margin-top: 15px;
       padding: 12px;
-      text-align: left;
-      vertical-align: top;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      display: none;
     }
 
-    .info-table th {
-      background: var(--card-2);
+    .message.error {
+      background: #ffe9e9;
+      border-color: #cc9999;
     }
 
-    code, pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    .message.success {
+      background: #eaf7ea;
+      border-color: #9ac79a;
     }
 
-    pre {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 12px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
+    .guide {
+      display: none;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-top: 20px;
     }
 
-    .step {
-      background: var(--card-2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      margin: 14px 0;
+    .guide.active {
+      display: block;
     }
 
-    .step h3 {
-      margin-bottom: 8px;
+    .info {
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      padding: 12px;
+      margin: 12px 0;
     }
 
-    .pill {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(124,196,255,0.15);
-      border: 1px solid rgba(124,196,255,0.2);
-      color: var(--accent-2);
+    ul {
+      margin-top: 8px;
+    }
+
+    ol li {
       margin-bottom: 10px;
     }
 
-    footer {
-      color: var(--muted);
-      padding: 0 0 50px;
-      text-align: center;
-      font-size: 0.95rem;
+    .small {
+      font-size: 14px;
+      color: #666;
     }
 
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    .anchor-links a {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      color: #0057b8;
+      text-decoration: none;
+    }
 
-      aside {
-        position: static;
+    .anchor-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 20px;
+    }
+
+    @media (max-width: 700px) {
+      main {
+        padding: 0 10px 25px;
       }
     }
   </style>
 </head>
 <body>
-
-  <header class="container">
-    <div class="hero">
-      <div class="tag">[Category / Tool / Method]</div>
-      <h1>[Guide Title]</h1>
-      <p class="subtitle">
-        [Write a short summary of what this guide does, who it is for, and what device/iOS versions it applies to.]
-      </p>
-
-      <div class="quick-info">
-        <div class="quick-card">
-          <strong>Supported Devices</strong>
-          <span>[e.g. iPhone X – iPhone 14]</span>
-        </div>
-        <div class="quick-card">
-          <strong>Supported iOS Versions</strong>
-          <span>[e.g. iOS 15.0 – 16.6.1]</span>
-        </div>
-        <div class="quick-card">
-          <strong>Computer Required?</strong>
-          <span>[Yes / No]</span>
-        </div>
-        <div class="quick-card">
-          <strong>Difficulty</strong>
-          <span>[Easy / Medium / Advanced]</span>
-        </div>
-      </div>
-    </div>
+  <header>
+    <h1>iOS / iPadOS Jailbreak Guide Selector</h1>
+    <p>Choose your device and iOS version group to open the correct guide.</p>
   </header>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="#overview">Overview</a>
-      <a href="#requirements">Requirements</a>
-      <a href="#compatibility">Compatibility</a>
-      <a href="#before-you-start">Before You Start</a>
-      <a href="#steps">Steps</a>
-      <a href="#post-install">Post-Install</a>
-      <a href="#troubleshooting">Troubleshooting</a>
-      <a href="#faq">FAQ</a>
-      <a href="#downloads">Downloads</a>
-    </div>
-  </nav>
+  <main>
+    <div class="box">
+      <h2>Select Your Device</h2>
+      <p>This page uses only <strong>2 guides</strong>:</p>
+      <ul>
+        <li><strong>Guide A:</strong> iOS 12.0 – 14.8.1</li>
+        <li><strong>Guide B:</strong> all the newer supported version groups you listed</li>
+      </ul>
 
-  <main class="container">
-    <div class="grid">
+      <label for="device">Device</label>
+      <select id="device">
+        <option value="">-- Select Device --</option>
+        <option>iPhone 6s</option>
+        <option>iPhone 6s Plus</option>
+        <option>iPhone SE (1st generation)</option>
+        <option>iPhone 7</option>
+        <option>iPhone 7 Plus</option>
+        <option>iPhone 8</option>
+        <option>iPhone 8 Plus</option>
+        <option>iPhone X</option>
+        <option>iPad Pro 12.9-inch (1st generation)</option>
+        <option>iPad Pro 12.9-inch (2nd generation)</option>
+        <option>iPad Pro 10.5-inch (1st generation)</option>
+        <option>iPad Air 2</option>
+        <option>iPad mini 4</option>
+        <option>iPad (5th generation)</option>
+        <option>iPad (6th generation)</option>
+        <option>iPad (7th generation)</option>
+      </select>
 
-      <aside>
-        <div class="card">
-          <h2>At a Glance</h2>
-          <ul class="sidebar-list">
-            <li><strong>Method:</strong> [Rootless / Rootful / Semi-Untethered / etc.]</li>
-            <li><strong>Jailbreak Tool:</strong> [Tool Name]</li>
-            <li><strong>Install Type:</strong> [App / Computer / Sideload / Browser]</li>
-            <li><strong>Estimated Time:</strong> [e.g. 10–20 minutes]</li>
-          </ul>
-        </div>
+      <label for="version">iOS / iPadOS Version Group</label>
+      <select id="version">
+        <option value="">-- Select Version Group --</option>
+        <option value="18">iOS / iPadOS 18.0 – 18.1.1</option>
+        <option value="17">iOS / iPadOS 17.0 – 17.X.X</option>
+        <option value="16">iOS / iPadOS 16.0 – 16.X.X</option>
+        <option value="15">iOS / iPadOS 15.0 – 15.X.X (latest)</option>
+        <option value="12-14">iOS 12.0 – iOS 14.8.1</option>
+      </select>
 
-        <div class="card">
-          <h2>Checklist</h2>
-          <ul class="checklist">
-            <li>[ ] Back up device</li>
-            <li>[ ] Confirm iOS version</li>
-            <li>[ ] Confirm device model</li>
-            <li>[ ] Download required files</li>
-            <li>[ ] Disable automatic updates</li>
-          </ul>
-        </div>
-      </aside>
+      <button onclick="openGuide()">Open Guide</button>
 
-      <div>
-        <section id="overview">
-          <div class="card">
-            <h2>Overview</h2>
-            <p>
-              [Explain what this jailbreak method is, what it installs, and any important limitations.]
-            </p>
+      <div id="message" class="message"></div>
 
-            <div class="notice">
-              <strong>Important:</strong> [Add a warning, limitation, or note here.]
-            </div>
-
-            <div class="notice danger">
-              <strong>Risk Note:</strong> [Explain any risks like bootloops, revokes, instability, unsupported tweaks, etc.]
-            </div>
-          </div>
-        </section>
-
-        <section id="requirements">
-          <div class="card">
-            <h2>Requirements</h2>
-            <ul>
-              <li>[Requirement 1]</li>
-              <li>[Requirement 2]</li>
-              <li>[Requirement 3]</li>
-              <li>[Requirement 4]</li>
-            </ul>
-
-            <pre>[Optional command, path, or setup notes go here]</pre>
-          </div>
-        </section>
-
-        <section id="compatibility">
-          <div class="card">
-            <h2>Compatibility</h2>
-            <table class="info-table">
-              <thead>
-                <tr>
-                  <th>Device</th>
-                  <th>iOS Version</th>
-                  <th>Supported?</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>[Example Device]</td>
-                  <td>[Example Version]</td>
-                  <td>[Yes / No / Partial]</td>
-                  <td>[Notes]</td>
-                </tr>
-                <tr>
-                  <td>[Example Device]</td>
-                  <td>[Example Version]</td>
-                  <td>[Yes / No / Partial]</td>
-                  <td>[Notes]</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="before-you-start">
-          <div class="card">
-            <h2>Before You Start</h2>
-            <p>[Put any prep instructions here.]</p>
-
-            <div class="notice success">
-              <strong>Recommended:</strong> [Add helpful advice here, like making an encrypted backup.]
-            </div>
-
-            <ul>
-              <li>[Preparation tip 1]</li>
-              <li>[Preparation tip 2]</li>
-              <li>[Preparation tip 3]</li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="steps">
-          <div class="card">
-            <h2>Step-by-Step Guide</h2>
-
-            <div class="step">
-              <div class="pill">Step 1</div>
-              <h3>[Step Title]</h3>
-              <p>[Explain exactly what the user should do in this step.]</p>
-              <pre>[Optional code / command / path / button names]</pre>
-            </div>
-
-            <div class="step">
-              <div class="pill">Step 2</div>
-              <h3>[Step Title]</h3>
-              <p>[Explain exactly what the user should do in this step.]</p>
-            </div>
-
-            <div class="step">
-              <div class="pill">Step 3</div>
-              <h3>[Step Title]</h3>
-              <p>[Explain exactly what the user should do in this step.]</p>
-            </div>
-
-            <div class="step">
-              <div class="pill">Step 4</div>
-              <h3>[Step Title]</h3>
-              <p>[Explain exactly what the user should do in this step.]</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="post-install">
-          <div class="card">
-            <h2>After Jailbreaking</h2>
-            <p>[Explain what to do after the jailbreak succeeds.]</p>
-
-            <ul>
-              <li>[Install package manager / bootstrap notes]</li>
-              <li>[Recommended repos or first steps]</li>
-              <li>[How to re-enable jailbreak after reboot, if needed]</li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="troubleshooting">
-          <div class="card">
-            <h2>Troubleshooting</h2>
-
-            <div class="step">
-              <h3>[Problem 1]</h3>
-              <p><strong>Cause:</strong> [Possible cause]</p>
-              <p><strong>Fix:</strong> [Solution]</p>
-            </div>
-
-            <div class="step">
-              <h3>[Problem 2]</h3>
-              <p><strong>Cause:</strong> [Possible cause]</p>
-              <p><strong>Fix:</strong> [Solution]</p>
-            </div>
-
-            <div class="step">
-              <h3>[Problem 3]</h3>
-              <p><strong>Cause:</strong> [Possible cause]</p>
-              <p><strong>Fix:</strong> [Solution]</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq">
-          <div class="card">
-            <h2>FAQ</h2>
-
-            <h3>[Question 1]</h3>
-            <p>[Answer]</p>
-
-            <h3>[Question 2]</h3>
-            <p>[Answer]</p>
-
-            <h3>[Question 3]</h3>
-            <p>[Answer]</p>
-          </div>
-        </section>
-
-        <section id="downloads">
-          <div class="card">
-            <h2>Downloads / Links</h2>
-            <ul>
-              <li><a href="#">[Download Link 1]</a></li>
-              <li><a href="#">[Download Link 2]</a></li>
-              <li><a href="#">[Official Site / Repo]</a></li>
-            </ul>
-          </div>
-        </section>
+      <div class="info">
+        <strong>How it works:</strong>
+        <p class="small">
+          If the selected device is supported on the selected version group, this page opens one of the two matching guide sections below.
+        </p>
       </div>
+    </div>
+
+    <div class="anchor-links box">
+      <h2>Quick Jump</h2>
+      <a href="#guide-old">Go to iOS 12.0 – 14.8.1 Guide</a>
+      <a href="#guide-new">Go to Newer Versions Guide</a>
+    </div>
+
+    <div id="guide-old" class="guide">
+      <h2>Guide A: iOS 12.0 – iOS 14.8.1</h2>
+      <p class="small">This guide is for devices supported on iOS 12.0 through iOS 14.8.1.</p>
+
+      <div class="info">
+        <strong>Supported devices in this guide:</strong>
+        <ul>
+          <li>iPhone 6s</li>
+          <li>iPhone 6s Plus</li>
+          <li>iPhone SE (1st generation)</li>
+          <li>iPhone 7</li>
+          <li>iPhone 7 Plus</li>
+          <li>iPhone 8</li>
+          <li>iPhone 8 Plus</li>
+          <li>iPhone X</li>
+          <li>iPad Pro 12.9-inch (1st generation)</li>
+          <li>iPad Pro 12.9-inch (2nd generation)</li>
+          <li>iPad Pro 10.5-inch (1st generation)</li>
+          <li>iPad Air 2</li>
+          <li>iPad (5th generation)</li>
+          <li>iPad (6th generation)</li>
+          <li>iPad mini 4</li>
+        </ul>
+      </div>
+
+      <h3>Overview</h3>
+      <p>
+        Replace this text with your full guide for all supported devices on iOS 12.0 to iOS 14.8.1.
+      </p>
+
+      <h3>Steps</h3>
+      <ol>
+        <li>Put your first step here.</li>
+        <li>Put your second step here.</li>
+        <li>Put your third step here.</li>
+        <li>Put your downloads, warnings, or notes here.</li>
+      </ol>
+
+      <h3>Troubleshooting</h3>
+      <p>Add common issues and fixes here.</p>
+    </div>
+
+    <div id="guide-new" class="guide">
+      <h2>Guide B: iOS / iPadOS 15.0 and newer listed groups</h2>
+      <p class="small">
+        This guide is for the newer version groups you listed:
+        iOS / iPadOS 15.x, 16.x, 17.x, and 18.0 – 18.1.1.
+      </p>
+
+      <div class="info">
+        <strong>Included version groups:</strong>
+        <ul>
+          <li>iOS / iPadOS 15.0 – 15.X.X (latest)</li>
+          <li>iOS / iPadOS 16.0 – 16.X.X</li>
+          <li>iOS / iPadOS 17.0 – 17.X.X</li>
+          <li>iOS / iPadOS 18.0 – 18.1.1</li>
+        </ul>
+      </div>
+
+      <div class="info">
+        <strong>Supported devices across these newer groups:</strong>
+        <ul>
+          <li>iPhone 6s</li>
+          <li>iPhone 6s Plus</li>
+          <li>iPhone SE (1st generation)</li>
+          <li>iPhone 7</li>
+          <li>iPhone 7 Plus</li>
+          <li>iPhone 8</li>
+          <li>iPhone 8 Plus</li>
+          <li>iPhone X</li>
+          <li>iPad Pro 12.9-inch (1st generation)</li>
+          <li>iPad Pro 12.9-inch (2nd generation)</li>
+          <li>iPad Pro 10.5-inch (1st generation)</li>
+          <li>iPad Air 2</li>
+          <li>iPad mini 4</li>
+          <li>iPad (5th generation)</li>
+          <li>iPad (6th generation)</li>
+          <li>iPad (7th generation)</li>
+        </ul>
+      </div>
+
+      <h3>Overview</h3>
+      <p>
+        Replace this text with your single guide for all the newer supported version groups.
+      </p>
+
+      <h3>Steps</h3>
+      <ol>
+        <li>Put your first step here.</li>
+        <li>Put your second step here.</li>
+        <li>Put your third step here.</li>
+        <li>Add device-specific notes here if needed.</li>
+      </ol>
+
+      <h3>Extra Notes</h3>
+      <p>
+        Example: iPhone X on iOS 16 may have issues. You can expand this section with your own warnings or special cases.
+      </p>
     </div>
   </main>
 
-  <footer class="container">
-    <p>
-      Last updated: [Date] • Created by [Your Name / Site Name]
-    </p>
+  <footer>
+    Edit the text inside the 2 guide sections to add your real guide content.
   </footer>
 
+  <script>
+    const compatibility = {
+      "18": [
+        "iPad (7th generation)"
+      ],
+      "17": [
+        "iPad Pro 12.9-inch (2nd generation)",
+        "iPad Pro 10.5-inch (1st generation)",
+        "iPad (6th generation)",
+        "iPad (7th generation)"
+      ],
+      "16": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X",
+        "iPad (5th generation)",
+        "iPad (6th generation)",
+        "iPad (7th generation)"
+      ],
+      "15": [
+        "iPhone 6s",
+        "iPhone 6s Plus",
+        "iPhone SE (1st generation)",
+        "iPhone 7",
+        "iPhone 7 Plus",
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X",
+        "iPad Pro 12.9-inch (1st generation)",
+        "iPad Pro 12.9-inch (2nd generation)",
+        "iPad Pro 10.5-inch (1st generation)",
+        "iPad Air 2",
+        "iPad mini 4"
+      ],
+      "12-14": [
+        "iPhone 6s",
+        "iPhone 6s Plus",
+        "iPhone SE (1st generation)",
+        "iPhone 7",
+        "iPhone 7 Plus",
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X",
+        "iPad Pro 12.9-inch (1st generation)",
+        "iPad Pro 12.9-inch (2nd generation)",
+        "iPad Pro 10.5-inch (1st generation)",
+        "iPad Air 2",
+        "iPad (5th generation)",
+        "iPad (6th generation)",
+        "iPad mini 4"
+      ]
+    };
+
+    function hideGuides() {
+      document.getElementById("guide-old").classList.remove("active");
+      document.getElementById("guide-new").classList.remove("active");
+    }
+
+    function showMessage(text, type) {
+      const message = document.getElementById("message");
+      message.textContent = text;
+      message.className = "message " + type;
+      message.style.display = "block";
+    }
+
+    function openGuide() {
+      const device = document.getElementById("device").value;
+      const version = document.getElementById("version").value;
+
+      hideGuides();
+
+      if (!device || !version) {
+        showMessage("Please select both a device and a version group.", "error");
+        return;
+      }
+
+      const supportedDevices = compatibility[version] || [];
+      const isSupported = supportedDevices.includes(device);
+
+      if (!isSupported) {
+        showMessage("That device is not in the selected version group.", "error");
+        return;
+      }
+
+      if (version === "12-14") {
+        document.getElementById("guide-old").classList.add("active");
+        document.getElementById("guide-old").scrollIntoView({ behavior: "smooth" });
+        showMessage("Opened the iOS 12.0 – 14.8.1 guide.", "success");
+      } else {
+        document.getElementById("guide-new").classList.add("active");
+        document.getElementById("guide-new").scrollIntoView({ behavior: "smooth" });
+        showMessage("Opened the newer versions guide.", "success");
+      }
+    }
+  </script>
 </body>
 </html>
