@@ -182,7 +182,7 @@
         <option value="18">iOS / iPadOS 18.0 – 18.1.1</option>
         <option value="17">iOS / iPadOS 17.0 – 17.X.X</option>
         <option value="16">iOS / iPadOS 16.0 – 16.X.X</option>
-        <option value="15">iOS / iPadOS 15.0 – 15.X.X (latest)</option>
+        <option value="15">iOS / iPadOS 15.0 – 15.X.X</option>
         <option value="12-14">iOS 12.0 – iOS 14.8.1</option>
       </select>
 
@@ -229,18 +229,34 @@
         </ul>
       </div>
 
-      <h3>Overview</h3>
+      <h3>Requirements</h3>
       <p>
-        Replace this text with your full guide for all supported devices on iOS 12.0 to iOS 14.8.1.
+        You will need:
       </p>
+      <ol>
+        <li>A Mac computer running MacOS Monterey or later</li>
+        <li><a href="https://github.com/alwaysappleftd/Lockra1n_v2.0/releases/download/Lockra1n_v2.1_Beta1/Lockra1n_v2.1_Beta1.zip">Latest version of Lockra1n</a>
+        <li>A USB to Lightning cable (ISSUES ARE KNOWN ON USB C TO LIGHTNING CABLES, Please use a usb a to lightning cable or a usb a to usb c adapter atleast!</li>
+      </ol>
 
       <h3>Steps</h3>
       <ol>
-        <li>Put your first step here.</li>
-        <li>Put your second step here.</li>
-        <li>Put your third step here.</li>
-        <li>Put your downloads, warnings, or notes here.</li>
+        <li>Open the app you downloaded in the Requirements section. If you see a "Untrusted developer" error refer to troubleshooting for a fix.</li>
+        <li>Click the "Prepare Lockra1n" button to ensure everything is installed and ready for using Lockra1n.</li>
+        <li>Click the "Search for Device" button. This will pair your device with the computer. Make sure to hit "Trust" on the device if prompted!</li>
+        <li>Click the "Generate Activation Files" button. It will check the registration and generate activation tickets for your device.
+If you are not registered, the tool will prompt you to do so. You can visit the free registration page here: https://alwaysappleftd.com/software/Lockra1n/register_device.php If you encounter an error like "Failed to generate tickets!", DO NOT ATTEMPT to activate! This could brick your device, requiring a restore in most cases to fix.</li>
+        <li>Click either the "Bypass Device (Ramdisk)" or the "Bypass Device (Normal mode)" button. The Ramdisk option should be more reliable but the normal mode is easier if any issues come up.</li>
       </ol>
+      <p>To enter DFU Mode on your device, the method varies depending on your device model. I recommend Googling "How to Enter DFU Mode on " and then your device model. For example, "How to Enter DFU Mode on iPhone 8".
+
+The tool will mount the device's filesystem, inject the tickets, apply some filesystem modifications, and reboot your device. After your device turns back on, you will be on the Home Screen!
+
+Also note that the "Re-Lock device (unhide baseband, ramdisk)" and the "Re-Lock device (unhide baseband, normal mode)" buttons will not remove the activation tickets. It just un-hides the baseband so the device returns to the Setup screen. To remove the tickets from the device, just do a clean restore in iTunes (older macOS versions), Finder, or 3uTools. DO NOT "Update" or "Retain User's Data"! This can in some cases brick the device, forcing a restore. It's also just a waste of time.
+
+Once everything is done, your device is bypassed untethered!
+
+</p>
 
       <h3>Troubleshooting</h3>
       <p>Add common issues and fixes here.</p>
