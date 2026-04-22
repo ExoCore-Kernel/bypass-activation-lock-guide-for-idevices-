@@ -269,64 +269,134 @@ If the app still won’t open, follow these steps:
 Open a blank Terminal window. You can find the Terminal app in the Other folder in your Launchpad. Type, in lowercase, xattr -cr (without quotes), then drag and drop the Lockra1n application you downloaded into the Terminal window. Press Enter to run the command. These steps should allow the app to open.
       </p>
     </div>
+<div id="guide-new" class="guide">
+  <h2>Guide B: iOS / iPadOS 15.0 and newer listed groups</h2>
+  <p class="small">
+    This guide is for the newer version groups you listed:
+    iOS / iPadOS 15.x, 16.x, 17.x, and 18.0 – 18.1.1.
+  </p>
 
-    <div id="guide-new" class="guide">
-      <h2>Guide B: iOS / iPadOS 15.0 and newer listed groups</h2>
-      <p class="small">
-        This guide is for the newer version groups you listed:
-        iOS / iPadOS 15.x, 16.x, 17.x, and 18.0 – 18.1.1.
-      </p>
+  <div class="info">
+    <strong>Included version groups:</strong>
+    <ul>
+      <li>iOS / iPadOS 15.0 – 15.X.X (latest)</li>
+      <li>iOS / iPadOS 16.0 – 16.X.X</li>
+      <li>iOS / iPadOS 17.0 – 17.X.X</li>
+      <li>iOS / iPadOS 18.0 – 18.1.1</li>
+    </ul>
+  </div>
 
-      <div class="info">
-        <strong>Included version groups:</strong>
-        <ul>
-          <li>iOS / iPadOS 15.0 – 15.X.X (latest)</li>
-          <li>iOS / iPadOS 16.0 – 16.X.X</li>
-          <li>iOS / iPadOS 17.0 – 17.X.X</li>
-          <li>iOS / iPadOS 18.0 – 18.1.1</li>
-        </ul>
-      </div>
+  <div class="info">
+    <strong>Supported devices across these newer groups:</strong>
+    <ul>
+      <li>iPhone 6s</li>
+      <li>iPhone 6s Plus</li>
+      <li>iPhone SE (1st generation)</li>
+      <li>iPhone 7</li>
+      <li>iPhone 7 Plus</li>
+      <li>iPhone 8</li>
+      <li>iPhone 8 Plus</li>
+      <li>iPhone X</li>
+      <li>iPad Pro 12.9-inch (1st generation)</li>
+      <li>iPad Pro 12.9-inch (2nd generation)</li>
+      <li>iPad Pro 10.5-inch (1st generation)</li>
+      <li>iPad Air 2</li>
+      <li>iPad mini 4</li>
+      <li>iPad (5th generation)</li>
+      <li>iPad (6th generation)</li>
+      <li>iPad (7th generation)</li>
+    </ul>
+  </div>
 
-      <div class="info">
-        <strong>Supported devices across these newer groups:</strong>
-        <ul>
-          <li>iPhone 6s</li>
-          <li>iPhone 6s Plus</li>
-          <li>iPhone SE (1st generation)</li>
-          <li>iPhone 7</li>
-          <li>iPhone 7 Plus</li>
-          <li>iPhone 8</li>
-          <li>iPhone 8 Plus</li>
-          <li>iPhone X</li>
-          <li>iPad Pro 12.9-inch (1st generation)</li>
-          <li>iPad Pro 12.9-inch (2nd generation)</li>
-          <li>iPad Pro 10.5-inch (1st generation)</li>
-          <li>iPad Air 2</li>
-          <li>iPad mini 4</li>
-          <li>iPad (5th generation)</li>
-          <li>iPad (6th generation)</li>
-          <li>iPad (7th generation)</li>
-        </ul>
-      </div>
+  <h3>Requirements</h3>
+  <p>You will need:</p>
+  <ol>
+    <li>A Mac computer running macOS Monterey or later</li>
+    <li>
+      <a href="https://github.com/alwaysappleftd/Lockra1n_v2.0/releases/download/Lockra1n_v2.1_Beta1/Lockra1n_v2.1_Beta1.zip">
+        Latest version of Lockra1n
+      </a>
+    </li>
+    <li>
+      A USB to Lightning cable 
+      <br />
+      <span class="small">
+        (USB-C to Lightning cables may cause issues. Use USB-A to Lightning or a USB-A adapter if possible.)
+      </span>
+    </li>
+  </ol>
 
-      <h3>Overview</h3>
-      <p>
-        Replace this text with your single guide for all the newer supported version groups.
-      </p>
+  <h3>Steps</h3>
+  <ol>
+    <li>Open the Lockra1n app you downloaded.</li>
+    <li>If you see an <strong>"Untrusted Developer"</strong> message, follow the troubleshooting steps below.</li>
+    <li>Click <strong>"Prepare Lockra1n"</strong> to install required components.</li>
+    <li>Click <strong>"Search for Device"</strong> and press <strong>"Trust"</strong> on your device if prompted.</li>
+    <li>
+      Click <strong>"Generate Activation Files"</strong>.
+      <br />
+      If not registered, register here:
+      <br />
+      https://alwaysappleftd.com/software/Lockra1n/register_device.php
+      <br /><br />
+      <strong>IMPORTANT:</strong> If you see <em>"Failed to generate tickets!"</em>, DO NOT proceed — this can brick your device.
+    </li>
+    <li>
+      Choose one:
+      <ul>
+        <li><strong>Bypass Device (Ramdisk)</strong> – more reliable</li>
+        <li><strong>Bypass Device (Normal mode)</strong> – easier</li>
+      </ul>
+    </li>
+    <li>
+      Enter DFU Mode for your device.
+      <br />
+      (Search: "How to enter DFU mode [your device model]")
+    </li>
+  </ol>
 
-      <h3>Steps</h3>
-      <ol>
-        <li>Put your first step here.</li>
-        <li>Put your second step here.</li>
-        <li>Put your third step here.</li>
-        <li>Add device-specific notes here if needed.</li>
-      </ol>
+  <p>
+    The tool will mount the filesystem, inject activation tickets, apply modifications, and reboot your device.
+    After reboot, you should reach the Home Screen.
+  </p>
 
-      <h3>Extra Notes</h3>
-      <p>
-        Example: iPhone X on iOS 16 may have issues. You can expand this section with your own warnings or special cases.
-      </p>
-    </div>
+  <p>
+    <strong>Important:</strong>
+    The "Re-Lock device" options do NOT remove activation tickets.
+    To fully remove them, perform a clean restore using Finder, iTunes, or 3uTools.
+  </p>
+
+  <p>
+    <strong>Do NOT use:</strong> "Update" or "Retain User Data" — this may brick the device.
+  </p>
+
+  <p>
+    Once completed, your device will be bypassed untethered.
+  </p>
+
+  <h3>Troubleshooting</h3>
+  <p>
+    If macOS blocks the app:
+  </p>
+  <ol>
+    <li>Right-click the app → click <strong>Open</strong></li>
+  </ol>
+
+  <p>If it still won’t open:</p>
+  <ol>
+    <li>Open Terminal</li>
+    <li>Type: <code>xattr -cr</code></li>
+    <li>Drag the Lockra1n app into Terminal</li>
+    <li>Press Enter</li>
+  </ol>
+
+  <p>If issues persist, contact the developer.</p>
+
+  <h3>Extra Notes</h3>
+  <p>
+    iPhone X on iOS 16 may be unstable and can have issues.
+  </p>
+</div>
   </main>
 
   <footer>
