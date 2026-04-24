@@ -5,137 +5,282 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iOS Jailbreak Guide Selector</title>
   <style>
+    :root {
+      --bg: #f4f5f7;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #657386;
+      --border: #d7dce3;
+      --border-dark: #b7bec8;
+      --primary: #26364a;
+      --primary-hover: #354a64;
+      --success-bg: #eaf7ea;
+      --success-border: #92c592;
+      --error-bg: #ffe9e9;
+      --error-border: #cc9999;
+      --warning-bg: #fff6db;
+      --warning-border: #dcc36a;
+      --info-bg: #f8fafc;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #222;
-      line-height: 1.5;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
     }
 
     header {
-      background: #333;
+      background: var(--primary);
       color: white;
-      padding: 20px;
+      padding: 34px 18px;
       text-align: center;
+      border-bottom: 5px solid #1b2736;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 44px);
+      letter-spacing: -0.03em;
+    }
+
+    header p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #e7edf5;
+      font-size: 17px;
     }
 
     main {
-      max-width: 950px;
-      margin: 20px auto;
-      padding: 0 15px 30px;
+      max-width: 1050px;
+      margin: 26px auto;
+      padding: 0 16px 34px;
     }
 
-    .box {
-      background: white;
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    h1, h2, h3 {
-      margin-top: 0;
-    }
-
-    label {
-      display: block;
-      margin-top: 14px;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    select, button {
-      width: 100%;
-      max-width: 500px;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #999;
-      background: white;
-    }
-
-    button {
-      margin-top: 16px;
-      background: #333;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #555;
-    }
-
-    .message {
-      margin-top: 15px;
-      padding: 12px;
-      border: 1px solid #ccc;
-      background: #fafafa;
-      display: none;
-    }
-
-    .message.error {
-      background: #ffe9e9;
-      border-color: #cc9999;
-    }
-
-    .message.success {
-      background: #eaf7ea;
-      border-color: #9ac79a;
+    .box,
+    .guide {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 22px;
     }
 
     .guide {
       display: none;
-      background: white;
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin-top: 20px;
+      margin-top: 22px;
     }
 
     .guide.active {
       display: block;
     }
 
-    .info {
-      background: #f7f7f7;
-      border: 1px solid #ddd;
-      padding: 12px;
-      margin: 12px 0;
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.2;
     }
 
-    ul {
-      margin-top: 8px;
-    }
-
-    ol li {
+    h2 {
+      font-size: 26px;
       margin-bottom: 10px;
+    }
+
+    h3 {
+      margin-top: 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    a {
+      color: #0057b8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 7px;
+      font-weight: 700;
+    }
+
+    select,
+    button {
+      width: 100%;
+      padding: 12px 13px;
+      font-size: 16px;
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      background: white;
+    }
+
+    select:focus,
+    button:focus {
+      outline: 3px solid rgba(38, 54, 74, 0.18);
+      border-color: var(--primary);
+    }
+
+    button {
+      margin-top: 18px;
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    button:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .selector-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: end;
+    }
+
+    .notice {
+      border: 1px solid var(--warning-border);
+      background: var(--warning-bg);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 16px 0 20px;
+    }
+
+    .message {
+      margin-top: 16px;
+      padding: 13px 15px;
+      border: 1px solid var(--border);
+      background: #fafafa;
+      border-radius: 10px;
+      display: none;
+      font-weight: 600;
+    }
+
+    .message.error {
+      background: var(--error-bg);
+      border-color: var(--error-border);
+    }
+
+    .message.success {
+      background: var(--success-bg);
+      border-color: var(--success-border);
+    }
+
+    .info {
+      background: var(--info-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 14px 0;
+    }
+
+    .warning {
+      background: var(--warning-bg);
+      border-color: var(--warning-border);
     }
 
     .small {
       font-size: 14px;
-      color: #666;
+      color: var(--muted);
+    }
+
+    .guide-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .guide-list li {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .anchor-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .anchor-links h2 {
+      width: 100%;
     }
 
     .anchor-links a {
       display: inline-block;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      color: #0057b8;
-      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 12px;
+      background: #fff;
     }
 
-    .anchor-links a:hover {
-      text-decoration: underline;
+    .section-label {
+      display: inline-block;
+      background: #e9eef5;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: #eef1f5;
+      border: 1px solid var(--border);
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    ol li,
+    ul li {
+      margin-bottom: 8px;
     }
 
     footer {
       text-align: center;
-      color: #666;
+      color: var(--muted);
       font-size: 14px;
-      padding: 20px;
+      padding: 24px 16px 32px;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
       main {
-        padding: 0 10px 25px;
+        margin-top: 16px;
+        padding: 0 10px 26px;
+      }
+
+      .box,
+      .guide {
+        padding: 18px;
+        border-radius: 12px;
+      }
+
+      .selector-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
       }
     }
   </style>
@@ -143,75 +288,140 @@
 <body>
   <header>
     <h1>iOS / iPadOS Jailbreak Guide Selector</h1>
-    <p>Choose your device and iOS version group to open the correct guide.</p>
+    <p>Choose your device and iOS version group to open the matching guide section.</p>
   </header>
 
   <main>
-    <div class="box">
+    <section class="box">
       <h2>Select Your Device</h2>
-      <h1>Note: if your iDevice/ios version isnt here but you know of another method, its because i havent added that to the guide yet because i am still looking for reliable and free methods to put on this guide so it may take some time before your method is added if atall.</h1>
-      <p>This page uses only <strong>2 guides</strong>:</p>
-      <ul>
-        <li><strong>Guide A:</strong> iOS 12.0 – 14.8.1</li>
-        <li><strong>Guide B:</strong> iOS 15.0-18.1.1</li>
-      </ul>
 
-      <label for="device">Device</label>
-      <select id="device">
-        <option value="">-- Select Device --</option>
-        <option>iPhone 6s</option>
-        <option>iPhone 6s Plus</option>
-        <option>iPhone SE (1st generation)</option>
-        <option>iPhone 7</option>
-        <option>iPhone 7 Plus</option>
-        <option>iPhone 8</option>
-        <option>iPhone 8 Plus</option>
-        <option>iPhone X</option>
-        <option>iPad Pro 12.9-inch (1st generation)</option>
-        <option>iPad Pro 12.9-inch (2nd generation)</option>
-        <option>iPad Pro 10.5-inch (1st generation)</option>
-        <option>iPad Air 2</option>
-        <option>iPad mini 4</option>
-        <option>iPad (5th generation)</option>
-        <option>iPad (6th generation)</option>
-        <option>iPad (7th generation)</option>
-      </select>
+      <div class="notice">
+        <strong>Note:</strong> If your iDevice or iOS version is not here but you know another method, it means it has not been added yet. Reliable and free methods are still being checked, so some methods may take time to appear.
+      </div>
 
-      <label for="version">iOS / iPadOS Version Group</label>
-      <select id="version">
-        <option value="">-- Select Version Group --</option>
-        <option value="18">iOS / iPadOS 18.0 – 18.1.1</option>
-        <option value="17">iOS / iPadOS 17.0 – 17.X.X</option>
-        <option value="16">iOS / iPadOS 16.0 – 16.X.X</option>
-        <option value="15">iOS / iPadOS 15.0 – 15.X.X</option>
-        <option value="12-14">iOS 12.0 – iOS 14.8.1</option>
-      </select>
+      <div class="info">
+        <strong>This page currently has 3 guide sections:</strong>
+        <ul>
+          <li><strong>Guide A:</strong> iOS 12.0 – 14.8.1</li>
+          <li><strong>Guide B:</strong> iOS / iPadOS 15.0 – 18.1.1</li>
+          <li><strong>Guide C:</strong> all A5 devices</li>
+        </ul>
+      </div>
+
+      <div class="selector-grid">
+        <div>
+          <label for="device">Device</label>
+          <select id="device">
+            <option value="">-- Select Device --</option>
+            <optgroup label="A5 devices">
+              <option>iPhone 4s</option>
+              <option>iPad 2</option>
+              <option>iPad mini (1st generation)</option>
+              <option>iPod touch (5th generation)</option>
+            </optgroup>
+            <optgroup label="A7 and newer listed devices">
+              <option>iPhone 6s</option>
+              <option>iPhone 6s Plus</option>
+              <option>iPhone SE (1st generation)</option>
+              <option>iPhone 7</option>
+              <option>iPhone 7 Plus</option>
+              <option>iPhone 8</option>
+              <option>iPhone 8 Plus</option>
+              <option>iPhone X</option>
+              <option>iPad Pro 12.9-inch (1st generation)</option>
+              <option>iPad Pro 12.9-inch (2nd generation)</option>
+              <option>iPad Pro 10.5-inch (1st generation)</option>
+              <option>iPad Air 2</option>
+              <option>iPad mini 4</option>
+              <option>iPad (5th generation)</option>
+              <option>iPad (6th generation)</option>
+              <option>iPad (7th generation)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div>
+          <label for="version">iOS / iPadOS Version Group</label>
+          <select id="version">
+            <option value="">-- Select Version Group --</option>
+            <option value="a5">A5 devices method</option>
+            <option value="18">iOS / iPadOS 18.0 – 18.1.1</option>
+            <option value="17">iOS / iPadOS 17.0 – 17.X.X</option>
+            <option value="16">iOS / iPadOS 16.0 – 16.X.X</option>
+            <option value="15">iOS / iPadOS 15.0 – 15.X.X</option>
+            <option value="12-14">iOS 12.0 – iOS 14.8.1</option>
+          </select>
+        </div>
+      </div>
 
       <button onclick="openGuide()">Open Guide</button>
-
       <div id="message" class="message"></div>
 
       <div class="info">
         <strong>How it works:</strong>
-        <p class="small">
-          If the selected device is supported on the selected version group, this page opens one of the two matching guide sections below.
-        </p>
+        <p class="small">If the selected device is supported on the selected version group, this page opens the matching guide section below.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="anchor-links box">
+    <section class="anchor-links box">
       <h2>Quick Jump</h2>
-      <a href="#guide-old">Go to iOS 12.0 – 14.8.1 Guide</a>
-      <a href="#guide-new">Go to Newer Versions Guide</a>
-    </div>
+      <a href="#guide-a5">A5 Device Guide</a>
+      <a href="#guide-old">iOS 12.0 – 14.8.1 Guide</a>
+      <a href="#guide-new">Newer Versions Guide</a>
+    </section>
 
-    <div id="guide-old" class="guide">
-      <h2>Guide A: iOS 12.0 – iOS 14.8.1</h2>
+    <section id="guide-a5" class="guide">
+      <span class="section-label">Guide C</span>
+      <h2>A5 Devices Method</h2>
+      <p class="small">This section is for A5 devices. The exact method, requirements, and troubleshooting content are placeholders for now.</p>
+
+      <div class="info">
+        <strong>A5 devices in this guide:</strong>
+        <ul class="guide-list">
+          <li>iPhone 4s</li>
+          <li>iPad 2</li>
+          <li>iPad mini (1st generation)</li>
+          <li>iPod touch (5th generation)</li>
+        </ul>
+      </div>
+
+      <h3>Requirements</h3>
+      <ol>
+        <li>A Windows computer running Windows 10 or later</li>
+        <li><a href="https://github.com/bablaerrr/bobikA5/releases/download/v1.2.1R2/net48.zip">Latest version of BobikA5</a></li>
+        <li>A 30 pin to USB adapter</li>
+      </ol>
+      <div class="info warning">
+        <p>Refer to troubleshooting if you are unable to open the exe.</p>
+      </div>
+
+  
+      <h3>Steps</h3>
+      <ol>
+        <li>Extract the ZIP file and run the BobikA5.exe application</li>
+        <li>Connect your device to the computer</li>
+        <li>Click on the 'Check device Compatibility button</li>
+        <li>Once finished, click on the 'Activate your device' button and wait.</li>
+        <li>Once complete, setup the device. You are done!</li>
+
+      </ol>
+<div class="info warning">
+  <p>Do not setup a passcode when setting up the device as it will unactivate if you restart if a passcode is setup.</p>
+</div>
+      <h3>Troubleshooting</h3>
+      <div class="info warning">
+        <p>If you are unable to open BobikA5 try disabling Windows Defender, then try again.</p>
+      </div>
+    </section>
+
+    <section id="guide-old" class="guide">
+      <span class="section-label">Guide A</span>
+      <h2>iOS 12.0 – iOS 14.8.1</h2>
       <p class="small">This guide is for devices supported on iOS 12.0 through iOS 14.8.1.</p>
 
       <div class="info">
         <strong>Supported devices in this guide:</strong>
-        <ul>
+        <ul class="guide-list">
           <li>iPhone 6s</li>
           <li>iPhone 6s Plus</li>
           <li>iPhone SE (1st generation)</li>
@@ -231,181 +441,148 @@
       </div>
 
       <h3>Requirements</h3>
-      <p>
-        You will need:
-      </p>
+      <p>You will need:</p>
       <ol>
-        <li>A Mac computer running MacOS Monterey or later</li>
-        <li><a href="https://github.com/alwaysappleftd/Lockra1n_v2.0/releases/download/Lockra1n_v2.1_Beta1/Lockra1n_v2.1_Beta1.zip">Latest version of Lockra1n</a>
-        <li>A USB to Lightning cable (ISSUES ARE KNOWN ON USB C TO LIGHTNING CABLES, Please use a usb a to lightning cable or a usb a to usb c adapter atleast!</li>
+        <li>A Mac computer running macOS Monterey or later</li>
+        <li><a href="https://github.com/alwaysappleftd/Lockra1n_v2.0/releases/download/Lockra1n_v2.1_Beta1/Lockra1n_v2.1_Beta1.zip">Latest version of Lockra1n</a></li>
+        <li>A USB to Lightning cable <span class="small">(USB-C to Lightning cables may cause issues. Use USB-A to Lightning or a USB-A adapter if possible.)</span></li>
       </ol>
 
-      <h2>Please note that iphone X on ios 16 is unstable and may have issues.</h2>
-      
+      <div class="info warning">
+        <strong>Extra note:</strong> iPhone X on iOS 16 may be unstable and can have issues.
+      </div>
+
       <h3>Steps</h3>
       <ol>
-        <li>Open the app you downloaded in the Requirements section. If you see a "Untrusted developer" error refer to troubleshooting for a fix.</li>
-        <li>Click the "Prepare Lockra1n" button to ensure everything is installed and ready for using Lockra1n.</li>
-        <li>Click the "Search for Device" button. This will pair your device with the computer. Make sure to hit "Trust" on the device if prompted!</li>
-        <li>Click the "Generate Activation Files" button. It will check the registration and generate activation tickets for your device.
-If you are not registered, the tool will prompt you to do so. You can visit the free registration page here: https://alwaysappleftd.com/software/Lockra1n/register_device.php If you encounter an error like "Failed to generate tickets!", DO NOT ATTEMPT to activate! This could brick your device, requiring a restore in most cases to fix.</li>
-        <li>Click either the "Bypass Device (Ramdisk)" or the "Bypass Device (Normal mode)" button. The Ramdisk option should be more reliable but the normal mode is easier if any issues come up.</li>
+        <li>Open the app you downloaded in the Requirements section. If you see an "Untrusted Developer" error, refer to troubleshooting.</li>
+        <li>Click <strong>Prepare Lockra1n</strong> to make sure everything is installed and ready.</li>
+        <li>Click <strong>Search for Device</strong>. Make sure to tap <strong>Trust</strong> on the device if prompted.</li>
+        <li>Click <strong>Generate Activation Files</strong>. If you are not registered, the tool will prompt you to register.</li>
+        <li>If you see <strong>Failed to generate tickets!</strong>, do not continue.</li>
+        <li>Select <strong>Bypass Device (Normal mode)</strong>. The Ramdisk method was deprecated.</li>
       </ol>
-      <p>To enter DFU Mode on your device, the method varies depending on your device model. I recommend Googling "How to Enter DFU Mode on " and then your device model. For example, "How to Enter DFU Mode on iPhone 8".
 
-The tool will mount the device's filesystem, inject the tickets, apply some filesystem modifications, and reboot your device. After your device turns back on, you will be on the Home Screen!
+      <p>To enter DFU Mode, the method varies depending on your device model. Search for your specific device model and DFU instructions.</p>
 
-Also note that the "Re-Lock device (unhide baseband, ramdisk)" and the "Re-Lock device (unhide baseband, normal mode)" buttons will not remove the activation tickets. It just un-hides the baseband so the device returns to the Setup screen. To remove the tickets from the device, just do a clean restore in iTunes (older macOS versions), Finder, or 3uTools. DO NOT "Update" or "Retain User's Data"! This can in some cases brick the device, forcing a restore. It's also just a waste of time.
-
-Once everything is done, your device is bypassed untethered!
-
-</p>
+      <p>The tool will complete its process and reboot your device. After your device turns back on, you should be on the Hello screen and be able to set it up as new.</p>
+      <div class="info warning">
+        <p>Do not set up a passcode when setting up the device. If you reboot when the device is setup youll have to bypass again.</p>
+      </div>
 
       <h3>Troubleshooting</h3>
-      <p>If MacOS gives a Untrusted Developer error, follow these steps:
-      Right-click on the app file and select "Open." This will bypass the unidentified developer message and open the app.
+      <p>If macOS gives an Untrusted Developer error:</p>
+      <ol>
+        <li>Right-click the app file.</li>
+        <li>Select <strong>Open</strong>.</li>
+      </ol>
 
-If the app still won’t open, follow these steps:
+      <p>If the app still will not open:</p>
+      <ol>
+        <li>Open Terminal.</li>
+        <li>Type <code>sudo xattr -cr</code>.</li>
+        <li>Drag the Lockra1n app into Terminal.</li>
+        <li>Press Enter.</li>
+      </ol>
+    </section>
 
-Open a blank Terminal window. You can find the Terminal app in the Other folder in your Launchpad. Type, in lowercase, sudo xattr -cr (without quotes), then drag and drop the Lockra1n application you downloaded into the Terminal window. Press Enter to run the command. These steps should allow the app to open.
-      </p>
-    </div>
-<div id="guide-new" class="guide">
-  <h2>Guide B: iOS / iPadOS 15.0 and newer listed groups</h2>
-  <p class="small">
-    This guide is for the newer version groups you listed:
-    iOS / iPadOS 15.x, 16.x, 17.x, and 18.0 – 18.1.1.
-  </p>
+    <section id="guide-new" class="guide">
+      <span class="section-label">Guide B</span>
+      <h2>iOS / iPadOS 15.0 and newer listed groups</h2>
+      <p class="small">This guide is for iOS / iPadOS 15.x, 16.x, 17.x, and 18.0 – 18.1.1.</p>
 
-  <div class="info">
-    <strong>Included version groups:</strong>
-    <ul>
-      <li>iOS / iPadOS 15.0 – 15.X.X (latest)</li>
-      <li>iOS / iPadOS 16.0 – 16.X.X</li>
-      <li>iOS / iPadOS 17.0 – 17.X.X</li>
-      <li>iOS / iPadOS 18.0 – 18.1.1</li>
-    </ul>
-  </div>
+      <div class="info">
+        <strong>Included version groups:</strong>
+        <ul>
+          <li>iOS / iPadOS 15.0 – 15.X.X</li>
+          <li>iOS / iPadOS 16.0 – 16.X.X</li>
+          <li>iOS / iPadOS 17.0 – 17.X.X</li>
+          <li>iOS / iPadOS 18.0 – 18.1.1</li>
+        </ul>
+      </div>
 
-  <div class="info">
-    <strong>Supported devices across these newer groups:</strong>
-    <ul>
-      <li>iPhone 6s</li>
-      <li>iPhone 6s Plus</li>
-      <li>iPhone SE (1st generation)</li>
-      <li>iPhone 7</li>
-      <li>iPhone 7 Plus</li>
-      <li>iPhone 8</li>
-      <li>iPhone 8 Plus</li>
-      <li>iPhone X</li>
-      <li>iPad Pro 12.9-inch (1st generation)</li>
-      <li>iPad Pro 12.9-inch (2nd generation)</li>
-      <li>iPad Pro 10.5-inch (1st generation)</li>
-      <li>iPad Air 2</li>
-      <li>iPad mini 4</li>
-      <li>iPad (5th generation)</li>
-      <li>iPad (6th generation)</li>
-      <li>iPad (7th generation)</li>
-    </ul>
-  </div>
+      <div class="info">
+        <strong>Supported devices across these newer groups:</strong>
+        <ul class="guide-list">
+          <li>iPhone 6s</li>
+          <li>iPhone 6s Plus</li>
+          <li>iPhone SE (1st generation)</li>
+          <li>iPhone 7</li>
+          <li>iPhone 7 Plus</li>
+          <li>iPhone 8</li>
+          <li>iPhone 8 Plus</li>
+          <li>iPhone X</li>
+          <li>iPad Pro 12.9-inch (1st generation)</li>
+          <li>iPad Pro 12.9-inch (2nd generation)</li>
+          <li>iPad Pro 10.5-inch (1st generation)</li>
+          <li>iPad Air 2</li>
+          <li>iPad mini 4</li>
+          <li>iPad (5th generation)</li>
+          <li>iPad (6th generation)</li>
+          <li>iPad (7th generation)</li>
+        </ul>
+      </div>
 
-  <h3>Requirements</h3>
-  <p>You will need:</p>
-  <ol>
-    <li>A Mac computer running macOS Monterey or later</li>
-    <li>
-      <a href="https://github.com/alwaysappleftd/Lockra1n_v2.0/releases/download/Lockra1n_v2.1_Beta1/Lockra1n_v2.1_Beta1.zip">
-        Latest version of Lockra1n
-      </a>
-    </li>
-    <li>
-      A USB to Lightning cable 
-      <br />
-      <span class="small">
-        (USB-C to Lightning cables may cause issues. Use USB-A to Lightning or a USB-A adapter if possible.)
-      </span>
-    </li>
-  </ol>
+      <h3>Requirements</h3>
+      <p>You will need:</p>
+      <ol>
+        <li>A Mac computer running macOS Monterey or later</li>
+        <li><a href="https://github.com/alwaysappleftd/Lockra1n_v2.0/releases/download/Lockra1n_v2.1_Beta1/Lockra1n_v2.1_Beta1.zip">Latest version of Lockra1n</a></li>
+        <li>A USB to Lightning cable <span class="small">(USB-C to Lightning cables may cause issues. Use USB-A to Lightning or a USB-A adapter if possible.)</span></li>
+      </ol>
 
-  <h3>Steps</h3>
-  <ol>
-    <li>Open the Lockra1n app you downloaded.</li>
-    <li>If you see an <strong>"Untrusted Developer"</strong> message, follow the troubleshooting steps below.</li>
-    <li>Click <strong>"Prepare Lockra1n"</strong> to install required components.</li>
-    <li>Click <strong>"Search for Device"</strong> and press <strong>"Trust"</strong> on your device if prompted.</li>
-    <li>
-      Click <strong>"Generate Activation Files"</strong>.
-      <br />
-      If not registered, register here:
-      <br />
-      https://alwaysappleftd.com/software/Lockra1n/register_device.php
-      <br /><br />
-      <strong>IMPORTANT:</strong> If you see <em>"Failed to generate tickets!"</em>, DO NOT proceed — this can brick your device.
-    </li>
-    <li>
-      Choose one:
-      <ul>
-        <li><strong>Bypass Device (Ramdisk)</strong> – more reliable</li>
-        <li><strong>Bypass Device (Normal mode)</strong> – easier</li>
-      </ul>
-    </li>
-    <li>
-      Enter DFU Mode for your device.
-      <br />
-      (Search: "How to enter DFU mode [your device model]")
-    </li>
-  </ol>
+      <h3>Steps</h3>
+      <ol>
+        <li>Open the Lockra1n app you downloaded.</li>
+        <li>If you see an <strong>Untrusted Developer</strong> message, follow the troubleshooting steps below.</li>
+        <li>Click <strong>Prepare Lockra1n</strong> to install required components.</li>
+        <li>Click <strong>Search for Device</strong> and press <strong>Trust</strong> on your device if prompted.</li>
+        <li>Click <strong>Generate Activation Files</strong>.</li>
+        <li>If you see <strong>Failed to generate tickets!</strong>, do not continue.</li>
+        <li>Select <strong>Bypass Device (Normal mode)</strong>. The Ramdisk method was deprecated.</li>
+        <li>Enter DFU Mode for your device.</li>
+      </ol>
 
-  <p>
-    The tool will mount the filesystem, inject activation tickets, apply modifications, and reboot your device.
-    After reboot, you should reach the Home Screen.
-  </p>
+      <p>The tool will complete its process and reboot your device. After reboot, you should reach the Hello screen and youll be able to setup the device as normal.</p>
+      <div class="info warning">
+        <p>Do not set up a passcode when setting up the device. If you reboot when the device is setup youll have to bypass again.</p>
+      </div>
 
-  <p>
-    <strong>Important:</strong>
-    The "Re-Lock device" options do NOT remove activation tickets.
-    To fully remove them, perform a clean restore using Finder, iTunes, or 3uTools.
-  </p>
+      <div class="info warning">
+        <strong>Important:</strong> The Re-Lock options do not fully remove all changes. To fully return the device to normal, use a clean restore. Do not use Update or Retain User Data.
+      </div>
 
-  <p>
-    <strong>Do NOT use:</strong> "Update" or "Retain User Data" — this may brick the device.
-  </p>
+      <h3>Troubleshooting</h3>
+      <p>If macOS blocks the app:</p>
+      <ol>
+        <li>Right-click the app.</li>
+        <li>Click <strong>Open</strong>.</li>
+      </ol>
 
-  <p>
-    Once completed, your device will be bypassed untethered.
-  </p>
+      <p>If it still will not open:</p>
+      <ol>
+        <li>Open Terminal.</li>
+        <li>Type <code>sudo xattr -cr</code>.</li>
+        <li>Drag the Lockra1n app into Terminal.</li>
+        <li>Press Enter.</li>
+      </ol>
 
-  <h3>Troubleshooting</h3>
-  <p>
-    If macOS blocks the app:
-  </p>
-  <ol>
-    <li>Right-click the app → click <strong>Open</strong></li>
-  </ol>
-
-  <p>If it still won’t open:</p>
-  <ol>
-    <li>Open Terminal</li>
-    <li>Type: <code>sudo xattr -cr</code></li>
-    <li>Drag the Lockra1n app into Terminal</li>
-    <li>Press Enter</li>
-  </ol>
-
-  <p>If issues persist, contact the developer.</p>
-
-  <h3>Extra Notes</h3>
-  <p>
-    iPhone X on iOS 16 may be unstable and can have issues.
-  </p>
-</div>
+      <h3>Extra Notes</h3>
+      <p>iPhone X on iOS 16 may be unstable and can have issues.</p>
+    </section>
   </main>
 
-  <footer>
-    Edit the text inside the 2 guide sections to add your real guide content.
-  </footer>
+
 
   <script>
+    const a5Devices = [
+      "iPhone 4s",
+      "iPad 2",
+      "iPad mini (1st generation)",
+      "iPod touch (5th generation)"
+    ];
+
     const compatibility = {
+      "a5": a5Devices,
       "18": [
         "iPad (7th generation)"
       ],
@@ -458,8 +635,9 @@ Open a blank Terminal window. You can find the Terminal app in the Other folder 
     };
 
     function hideGuides() {
-      document.getElementById("guide-old").classList.remove("active");
-      document.getElementById("guide-new").classList.remove("active");
+      document.querySelectorAll(".guide").forEach((guide) => {
+        guide.classList.remove("active");
+      });
     }
 
     function showMessage(text, type) {
@@ -467,6 +645,13 @@ Open a blank Terminal window. You can find the Terminal app in the Other folder 
       message.textContent = text;
       message.className = "message " + type;
       message.style.display = "block";
+    }
+
+    function openSection(sectionId, messageText) {
+      const section = document.getElementById(sectionId);
+      section.classList.add("active");
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      showMessage(messageText, "success");
     }
 
     function openGuide() {
@@ -488,14 +673,12 @@ Open a blank Terminal window. You can find the Terminal app in the Other folder 
         return;
       }
 
-      if (version === "12-14") {
-        document.getElementById("guide-old").classList.add("active");
-        document.getElementById("guide-old").scrollIntoView({ behavior: "smooth" });
-        showMessage("Opened the iOS 12.0 – 14.8.1 guide.", "success");
+      if (version === "a5") {
+        openSection("guide-a5", "Opened the A5 device guide.");
+      } else if (version === "12-14") {
+        openSection("guide-old", "Opened the iOS 12.0 – 14.8.1 guide.");
       } else {
-        document.getElementById("guide-new").classList.add("active");
-        document.getElementById("guide-new").scrollIntoView({ behavior: "smooth" });
-        showMessage("Opened the newer versions guide.", "success");
+        openSection("guide-new", "Opened the newer versions guide.");
       }
     }
   </script>
